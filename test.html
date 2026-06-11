@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OpenNotify Test</title>
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <style>
+    body { font-family: sans-serif; padding: 40px; max-width: 500px; }
+    .notif { background: #f0f0f0; padding: 12px 16px; border-radius: 8px; margin-bottom: 10px; }
+    .notif strong { display: block; margin-bottom: 4px; }
+    #status { color: gray; margin-bottom: 24px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h2>OpenNotify — live test</h2>
+  <p id="status">Connecting...</p>
+  <div id="feed"></div>
+
+  <script>
+    const socket = io('http://localhost:3000')
+
+    socket.on('connect', () => {
+      document.getElementById('status').textContent = 'Connected as user_123. Waiting for notifications...'
+      socket.emit('join', 'user_123')
+    })
+
+    socket.on('notification', (data) => {
+      const div = document.createElement('div')
+      div.className = 'notif'
+      div.innerHTML = `<strong>${data.title}</strong>${data.body}`
+      document.getElementById('feed').prepend(div)
+    })
+
+    socket.on('disconnect', () => {
+      document.getElementById('status').textContent = 'Disconnected'
+    })
+  </script>
+</body>
+</html>
