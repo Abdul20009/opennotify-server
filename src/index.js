@@ -66,6 +66,6 @@ app.get('/presence/:userId', async (req, res) => {
 app.use('/notifications', notificationRoutes)
 
 const PORT = process.env.PORT || 3000
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`OpenNotify running on port ${PORT}`)
 })
