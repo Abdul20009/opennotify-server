@@ -41,7 +41,7 @@ Flutter App  ──▶  OpenNotify Server (Node.js + Express + Socket.io)
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/yourusername/opennotify-server.git
+git clone https://github.com/Abdul20009/opennotify-server.git
 cd opennotify-server
 ```
 
@@ -162,7 +162,7 @@ Add to your `pubspec.yaml`:
 dependencies:
   opennotify_flutter:
     git:
-      url: https://github.com/yourusername/opennotify_flutter.git
+      url: https://github.com/Abdul20009/opennotify_flutter.git
 ```
 
 Usage:
